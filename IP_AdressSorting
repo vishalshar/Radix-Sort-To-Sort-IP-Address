@@ -1,0 +1,30 @@
+public class RadixSort {
+
+    public static void main(String args[]) {
+        String[] ip = {"123.123.123.123",
+            "432.432.432.432",
+            "321.321.321.321"};
+        ip = radixSort(ip);
+
+        for (int i = 0; i < ip.length; i++) {
+            System.out.println(ip[i]);
+        }
+    }
+
+    public static String[] radixSort(String ip[]) {
+        // length of ip address
+        int length = ip[0].length();
+
+        // compare values and swap
+        for (int i = length-1; i >=0 ; i--) {
+            for (int j = 1; j < ip.length; j++) {
+                if (ip[j - 1].charAt(i) > ip[j].charAt(i)) {
+                    String temp = ip[j];
+                    ip[j] = ip[j - 1];
+                    ip[j - 1] = temp;
+                }
+            }
+        }
+        return ip;
+    }
+}
